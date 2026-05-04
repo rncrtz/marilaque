@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marilaque Captions</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* GENERAL BODY STYLING */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    background: linear-gradient(135deg, #D16BA5 0%, #86A8E7 50%, #5FFBF1 100%);
+    background-attachment: fixed;
+    color: #000;
+}
+
+/* CONTAINER */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* GLASS EFFECT SECTIONS */
+.glass {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.glass:hover {
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* INPUTS */
+input, button {
+    font-family: 'Roboto', sans-serif;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(5px);
+    background: rgba(255,255,255,0.2);
+    color: #808080;
+    margin-top: 6px;
+    transition: all 0.2s ease;
+}
+
+input:focus, button:focus {
+    outline: none;
+    border-color: #fff;
+    box-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+/* BUTTONS */
+button {
+    cursor: pointer;
+    background: rgba(255,255,255,0.3);
+}
+
+button:hover {
+    background: rgba(255,255,255,0.5);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* SPECIAL THANKS MANAGER */
+.thanks-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.2);
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+.remove-btn {
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+/* TEXT SECTIONS */
+p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* PHOTO GRID EXAMPLE */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- CHANGE DATE SECTION -->
+    <section class="glass">
+        <label for="dateInput">Change Date:</label>
+        <input type="date" id="dateInput" onchange="updateDate()">
+    </section>
+
+    <!-- TODAY'S FLICKERS -->
+    <section class="glass copyDiv" onclick="copyText(this)">
+        <p>
+            📸 <b>𝗧𝗢𝗗𝗔𝗬'𝗦 𝗙𝗟𝗜𝗖𝗞𝗘𝗥𝗦</b> (PUMITIK)<br><br>
+            🗓️ <span class="date">Saturday, March 8, 2025</span>
+            <div class="photo-grid">
+                <div>📸</div><div>📸</div><div>📸</div><div>📸</div>
+                <div>📸</div><div>📸</div><div>📸</div><div>📸</div>
+                <div>📸 tag others..</div>
+            </div><br>
+            ❤️ Send Appreciation - 09165039113<br><br>
+            📹 For sports event coverage, message us on Facebook at fb.com/storiesofenduranceph.
+        </p>
+    </section>
+
+    <!-- INFRAME SECTION -->
+    <section class="glass copyDiv" onclick="copyText(this)">
+        <p>
+            📷 <b>𝗜𝗡 𝗙𝗥𝗔𝗠𝗘 :</b> (Tag 'em)<br><br>
+            📍 Taktak Road, Antipolo City, Rizal<br>
+            🗓️ <span class="date">Saturday, March 8, 2025</span><br><br>
+            ❤️ Send Appreciation - 09165039113<br><br>
+            📹 For sports event coverage, message us on Facebook at fb.com/storiesofenduranceph.
+        </p>
+    </section>
+
+    <!-- ALBUM TITLE -->
+    <section class="glass copyDiv">
+        <p>𝗔𝗹𝗯𝘂𝗺 𝗧𝗶𝘁𝗹𝗲</p>
+    </section>
+    <section class="glass copyDiv" onclick="copyText(this)">
+        <p><span class="album-date">Month-Day-Year</span> - Taktak Road, Antipolo City</p>
+    </section>
+
+    <!-- DESCRIPTION -->
+    <section class="glass copyDiv" onclick="copyText(this)">
+        <p>
+            Thanks for your support! Please like & follow my page, and feel free to share the photos. You can also support via GCash: 09165039113. Thank you! 😊<br>
+📹 For sports event coverage, message us on Facebook at fb.com/storiesofenduranceph.
+        </p>
+    </section>
+
+    <!-- FLICKERS LINK -->
+    <section class="glass">
+        <label for="linkInput">Flickers Link:</label>
+
+        <div style="display:flex; gap:8px;">
+            <input type="url" id="linkInput" placeholder="Enter new link" oninput="updateLink()" style="flex:1;">
+            <button onclick="pasteClipboard()">Paste</button>
+        </div>
+    </section>
+
+    <!-- NUMBERS
+    <section class="glass">
+        <b>𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵𝟬</b>
+    </section> -->
+
+    <!-- BATCH & ALBUM -->
+    <section class="glass">
+        <label for="batchInput">Batch Number:</label>
+        <input id="batchInput" placeholder="0" oninput="updateBatch()">
+
+        <label for="albumInput">End of album:</label>
+        <input id="albumInput" placeholder="0" oninput="updateAlbum()">
+
+<label><b>𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵𝟬</b></label>
+    </section>
+
+    <!-- POST SECTION -->
+    <section class="glass copyDiv" onclick="copyText(this)">
+        <p>
+            📷 <b>𝗧𝗮𝗸𝘁𝗮𝗸 𝗥𝗼𝗮𝗱, 𝗔𝗻𝘁𝗶𝗽𝗼𝗹𝗼 𝗖𝗶𝘁𝘆</b><br>
+            🖼️ <b>𝗕𝗮𝘁𝗰𝗵 </b><span id="batchNumber">12345678901</span> <b>𝗼𝗳 </b><span id="album">𝟭</span> (All photos in album)<br>
+            🗓️ <b>𝗗𝗮𝘁𝗲:</b> <span class="date">Saturday, March 8, 2025</span><br>
+            ---<br>
+            🤝 𝗦𝗽𝗲𝗰𝗶𝗮𝗹 𝗧𝗵𝗮𝗻𝗸𝘀 𝗧𝗼:<br>
+            <span id="specialThanksList"></span>
+            ---<br>
+            📣 𝗣𝗿𝗼𝗺𝗼𝘁𝗲 𝗪𝗶𝘁𝗵 𝗨𝘀:<br>
+            👍 Advertise your biz through my photos.<br>
+            📩 DM for rates and inquiries.<br>
+            ---<br>
+            💼 𝗦𝗲𝗿𝘃𝗶𝗰𝗲𝘀 𝗢𝗳𝗳𝗲𝗿𝗲𝗱:<br>
+            📸 Hi-Res Photo (No Watermark) – ₱50 each<br>
+            🖼️ Photo Sintra A4 – ₱200<br>
+            📹 For sports event coverage, message us on Facebook at fb.com/storiesofenduranceph.<br>
+            ---<br>
+            📷 𝗣𝗵𝗼𝘁𝗼𝗴𝗿𝗮𝗽𝗵𝗲𝗿 𝗔𝘁𝘁𝗲𝗻𝗱𝗮𝗻𝗰𝗲 𝗳𝗼𝗿 𝗧𝗼𝗱𝗮𝘆:<br>
+            🔗 <span></span><a id="flickersLink" href="">Click to view album</a></span><br>
+            ---<br>
+            🏷️ 𝗧𝗮𝗴𝘀:<br>
+            #taktakpitik<br>
+            #taktakalleypodium<br>
+            #taktakfoodpark<br>
+            #pinagmisahan<br>
+            #daangbakal<br>
+            #bigotecafe<br>
+            #rcshots<br><br>
+            ❤️ Send Your Appreciation: 0916-503-9113
+        </p>
+    </section>
+
+    <!-- SPECIAL THANKS EDITOR -->
+    <section class="glass">
+        <label for="thanksInput">Special Thanks To:</label>
+        <input type="text" id="thanksInput" placeholder="@Bigote.Cafe">
+        <button onclick="addSpecialThanks()">Add</button>
+        <div id="thanksManager" style="margin-top:10px;"></div>
+    </section>
+
+<!-- ALL PHOTOS SECTION -->
+    <section class="glass copyDiv" onclick="copyText(this)">
+        <p>
+            📕 <b>𝗔𝗹𝗹 𝗽𝗵𝗼𝘁𝗼𝘀 𝗳𝗿𝗼𝗺 <span class="allphotos-date">Month Day, Year</span></b><br>
+            👉 <b>𝑭𝒐𝒓 𝒎𝒐𝒓𝒆 𝒑𝒉𝒐𝒕𝒐𝒔, 𝒑𝒍𝒆𝒂𝒔𝒆 𝒔𝒆𝒆 𝒐𝒖𝒓 𝒑𝒓𝒆𝒗𝒊𝒐𝒖𝒔 𝒂𝒍𝒃𝒖𝒎. </b><br>
+            📹 For sports event coverage, message us on Facebook at fb.com/storiesofenduranceph.<br><br>
+            
+            ❤️ Send Your Appreciation: 0916-503-9113
+        </p>
+    </section>
+    
+    <section class="glass copyDiv" onclick="copyText(this)">
+        <p>
+        GCash<br>
+        Name: RO....O C.<br>
+        Number: 09165039113<br>
+        </p>
+    </section>
+</div>
+
+<audio id="hoverSound" preload="auto">
+    <source src="https://foldr.space/d/ps4-nav.wav" type="audio/wav">
+</audio>
+    
+<script>
+// HOVER SOUND FX   
+const hoverSound = document.getElementById("hoverSound");
+
+document.querySelectorAll(".glass").forEach(div => {
+    div.addEventListener("mouseenter", () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+    });
+});
+    
+// COPY FUNCTION
+function copyText(element) {
+    navigator.clipboard.writeText(element.innerText)
+        .then(() => alert("Copied!"))
+        .catch(() => alert("Failed to copy."));
+}
+
+// PASTE FUNCTION
+async function pasteClipboard() {
+    try {
+        const text = await navigator.clipboard.readText();
+        const input = document.getElementById("linkInput");
+
+        input.value = text;
+        updateLink();
+
+    } catch (err) {
+        alert("Clipboard access denied. Please allow clipboard permission.");
+    }
+}
+    
+// DATE UPDATE
+function updateDate() {
+    const dateInput = document.getElementById("dateInput").value;
+    if (!dateInput) return;
+    localStorage.setItem("savedDate", dateInput);
+    const date = new Date(dateInput);
+    const fullOptions = { weekday:"long", year:"numeric", month:"long", day:"numeric" };
+    const albumOptions = { year:"numeric", month:"long", day:"numeric" };
+    document.querySelectorAll(".date").forEach(el => el.textContent = date.toLocaleDateString("en-US", fullOptions));
+    document.querySelectorAll(".album-date").forEach(el => el.textContent = date.toLocaleDateString("en-US", albumOptions));
+    // ✅ NEW: All Photos section
+    document.querySelectorAll(".allphotos-date").forEach(el =>
+        el.textContent = date.toLocaleDateString("en-US", albumOptions)
+    );
+}
+
+// LINK UPDATE
+function updateLink() {
+    const linkInput = document.getElementById("linkInput").value;
+    localStorage.setItem("savedLink", linkInput);
+    const linkElement = document.getElementById("flickersLink");
+    linkElement.href = linkInput;
+    linkElement.textContent = linkInput;
+}
+
+// ALBUM & BATCH
+function updateAlbum() {
+    let input = document.getElementById("albumInput").value;
+    document.getElementById("album").textContent = input || "1";
+    localStorage.setItem("albumNumber", input);
+}
+
+function updateBatch() {
+    let input = document.getElementById("batchInput").value;
+    document.getElementById("batchNumber").textContent = input || "12345678901";
+    localStorage.setItem("batchNumber", input);
+}
+
+// SPECIAL THANKS LIST
+let specialThanksArray = [];
+function addSpecialThanks() {
+    let value = document.getElementById("thanksInput").value.trim();
+    if (!value) return;
+    specialThanksArray.push(value);
+    document.getElementById("thanksInput").value = "";
+    saveSpecialThanks();
+    renderSpecialThanks();
+}
+function removeSpecialThanks(index) {
+    specialThanksArray.splice(index,1);
+    saveSpecialThanks();
+    renderSpecialThanks();
+}
+function renderSpecialThanks() {
+    const postContainer = document.getElementById("specialThanksList");
+    const managerContainer = document.getElementById("thanksManager");
+    postContainer.innerHTML = "";
+    managerContainer.innerHTML = "";
+    specialThanksArray.forEach((name,index)=>{
+        let cleanName = name.replace("@","");
+        postContainer.innerHTML += `⭐ <a href="https://instagram.com/${cleanName}" target="_blank">${name}</a><br>`;
+        managerContainer.innerHTML += `<div class="thanks-item"><span>${name}</span><span class="remove-btn" onclick="removeSpecialThanks(${index})">❌</span></div>`;
+    });
+}
+function saveSpecialThanks(){localStorage.setItem("specialThanksList",JSON.stringify(specialThanksArray));}
+function loadSpecialThanks(){let saved = localStorage.getItem("specialThanksList"); if(saved){specialThanksArray=JSON.parse(saved);renderSpecialThanks();}}
+
+// LOAD SAVED DATA
+window.onload = function() {
+    loadSpecialThanks();
+    let savedAlbum = localStorage.getItem("albumNumber");
+    if(savedAlbum!==null){document.getElementById("albumInput").value=savedAlbum; document.getElementById("album").textContent=savedAlbum;}
+    let savedBatch = localStorage.getItem("batchNumber");
+    if(savedBatch!==null){document.getElementById("batchInput").value=savedBatch; document.getElementById("batchNumber").textContent=savedBatch;}
+    let savedDate = localStorage.getItem("savedDate");
+    if(savedDate){document.getElementById("dateInput").value=savedDate; updateDate();}
+    let savedLink = localStorage.getItem("savedLink");
+    if(savedLink){document.getElementById("linkInput").value=savedLink; updateLink();}
+};  
+</script>
+
+<!-- FIREBASE SCRIPT -->
+    
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyC64_qQ1kcREov7FIctNLkjI_CWevh2ufo",
+  authDomain: "rcshots---pitik-caption.firebaseapp.com",
+  projectId: "rcshots---pitik-caption",
+  storageBucket: "rcshots---pitik-caption.firebasestorage.app",
+  messagingSenderId: "724627947169",
+  appId: "1:724627947169:web:1e4f57930e3005fcc53ae0",
+  measurementId: "G-MB90SF0768"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+console.log("Firebase connected!");
+</script>   
+    
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>  
+    
+</body>
+</html>
